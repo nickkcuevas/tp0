@@ -61,4 +61,14 @@ int comparar(int vector1[], int n1, int vector2[], int n2) {
  * selección.
  */
 void seleccion(int vector[], int n) {
+	if (n < 2) return;
+	int minParcial;
+	for (int i=0; i<n; i++){
+		minParcial = vector[i];
+		for (int j=i+1; j<n; j++){
+			int array[] = {minParcial, vector[j]};
+			if(maximo(array, 2) == 0) minParcial = vector[j];
+		}
+		swap(&vector[i], &minParcial);
+	}
 }
