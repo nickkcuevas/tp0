@@ -1,4 +1,5 @@
 #include "tp0.h"
+#include <stdio.h>
 
 /* ******************************************************************
  *                     FUNCIONES A COMPLETAR
@@ -34,11 +35,7 @@ int maximo(int vector[], int n) {
  * el primer elemento en el que difieren no existe o es menor.
  */
 int comparar(int vector1[], int n1, int vector2[], int n2) {
-	int pivot = n1;
-	if (n1 > n2){
-		pivot= n2;
-	}
-	for (int i=0; i < pivot; i++){
+	for (int i=0; i < n1 && i < n2; i++){
 		if(vector1[i] < vector2[i]){
 			return -1;
 		}
@@ -54,15 +51,16 @@ int comparar(int vector1[], int n1, int vector2[], int n2) {
 /* selection_sort() ordena el arreglo recibido mediante el algoritmo de
  * selección.
  */
+
+// mandar el maximo al final y fue.
+
 void seleccion(int vector[], int n) {
 	if (n < 2) return;
-	int* minParcial;
 	for (int i=0; i<n; i++){
-		minParcial = &vector[i];
-		for (int j=i+1; j<n; j++){
-			int vectorA[] = {*minParcial, vector[j]};
-			if(maximo(vectorA, 2) == 0) minParcial = &vector[j];
+		int slice = n-i;
+		int posMaximo = maximo(vector, slice);
+		if (posMaximo != slice){
+			swap(&vector[slice -1], &vector[posMaximo]);			
 		}
-		swap(&vector[i], minParcial);
 	}
 }
