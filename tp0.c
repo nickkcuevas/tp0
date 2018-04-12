@@ -1,5 +1,5 @@
 #include "tp0.h"
-#include <stdio.h>
+
 
 /* ******************************************************************
  *                     FUNCIONES A COMPLETAR
